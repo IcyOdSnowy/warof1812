@@ -1,108 +1,69 @@
+@import url('https://googleapis.com');
+
 :root {
-    --gold: #ffcc33;
-    --bg: #050505;
-    --card: rgba(255, 255, 255, 0.03);
-    --glass: rgba(255, 255, 255, 0.07);
-    --accent: #e63946;
+    --primary-red: #a31621;
+    --paper: #fdfaf5; /* Clean parchment look */
+    --gold: #b08d57;
+    --text: #2c2c2c;
+    --card-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 body {
-    background-color: var(--bg);
-    color: #fafafa;
-    font-family: 'Inter', sans-serif; /* Modern sans-serif */
+    background-color: var(--paper);
+    color: var(--text);
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
-    overflow-x: hidden;
 }
 
-/* Modern Top Bar with Search */
-.top-nav {
+/* Modern Sticky Header */
+nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 5%;
-    background: rgba(0,0,0,0.8);
-    backdrop-filter: blur(20px);
-    position: sticky;
-    top: 0;
-    z-index: 2000;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding: 1rem 5%;
+    background: white;
+    border-bottom: 3px solid var(--primary-red);
+    position: sticky; top: 0; z-index: 1000;
 }
 
-.search-container {
-    background: var(--glass);
+.search-box {
+    background: #f0f0f0;
+    border: 1px solid #ccc;
     padding: 8px 15px;
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    border: 1px solid rgba(255,255,255,0.1);
-    width: 300px;
+    border-radius: 20px;
+    width: 250px;
 }
 
-.search-container input {
-    background: none;
-    border: none;
-    color: white;
-    margin-left: 10px;
-    outline: none;
-    width: 100%;
+/* Hero Section */
+.hero {
+    height: 60vh;
+    background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), 
+                url('https://wikimedia.org') center/cover;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; border-bottom: 1px solid #ddd;
 }
 
-/* Hero Video/Image Container */
-.hero-visual {
-    height: 90vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(to bottom, transparent, var(--bg)),
-                url('https://unsplash.com'); /* Sharp aesthetic forest */
-    background-size: cover;
-    text-align: center;
-}
+h1, h2 { font-family: 'Cinzel', serif; color: var(--primary-red); }
 
-.hero-visual h1 {
-    font-size: 6rem;
-    font-weight: 900;
-    letter-spacing: -2px;
-    background: linear-gradient(to right, #fff, var(--gold));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-/* Grid Layout for Modern Sections */
+/* Bento Grid */
 .bento-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 20px;
-    padding: 50px 5%;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px; padding: 60px 5%;
 }
 
-.bento-item {
-    background: var(--card);
-    border-radius: 24px;
-    padding: 30px;
-    border: 1px solid rgba(255,255,255,0.05);
-    transition: all 0.5s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.bento-item:hover {
-    background: rgba(255,255,255,0.08);
-    transform: translateY(-10px);
-    border-color: var(--gold);
-}
-
-.bento-item.large { grid-column: span 2; grid-row: span 2; }
-
-/* Animated Buttons */
-.btn-modern {
-    background: var(--gold);
-    color: black;
-    padding: 15px 35px;
+.bento-card {
+    background: white;
     border-radius: 12px;
-    font-weight: 700;
-    text-decoration: none;
-    transition: 0.3s;
+    box-shadow: var(--card-shadow);
+    transition: 0.3s; overflow: hidden; border: 1px solid #eee;
 }
 
-.btn-modern:hover { opacity: 0.9; box-shadow: 0 0 30px rgba(255,204,51,0.4); }
+.bento-card:hover { transform: translateY(-10px); border-color: var(--gold); }
+
+.card-img { width: 100%; height: 220px; object-fit: cover; border-bottom: 3px solid var(--gold); }
+
+.card-content { padding: 25px; }
+
+/* Functional Highlight */
+.badge { background: var(--primary-red); color: white; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; }
