@@ -3,87 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Canadian Identity | The Digital Archive</title>
+    <title>1812 | The Digital Archive</title>
+    <!-- Modern Font: Inter for UI, Playfair for History -->
     <link href="https://googleapis.com" rel="stylesheet">
     <style>
-        :root { --primary: #007AFF; --bg: #ffffff; --text: #1d1d1f; --map-red: #8b0000; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
+        :root {
+            --primary: #007AFF; /* Tech Blue */
+            --bg: #ffffff;
+            --card: #f5f5f7;
+            --text: #1d1d1f;
+            --accent: #ffcc00;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation & Functional Search */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1rem 5%; background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(20px); position: sticky; top: 0; z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .search-container { display: flex; align-items: center; background: #f2f2f7; padding: 8px 15px; border-radius: 12px; width: 300px; }
+        .search-container input { background: none; border: none; outline: none; margin-left: 10px; width: 100%; }
+
+        /* Hero Section */
+        header {
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), 
+                        url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAHFUx60A5-LswacxCoFe7Y_c613mtOJ1Ttw&s') center/cover;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; color: white;
+        }
+
+        header h1 { font-family: 'Playfair Display', serif; font-size: 5rem; margin: 0; }
+        header p { font-size: 1.2rem; max-width: 700px; opacity: 0.9; }
+
+        /* The Bento Grid */
+        .bento-grid {
+            display: grid; grid-template-columns: repeat(12, 1fr);
+            gap: 20px; padding: 60px 5%;
+        }
+
+        .section-card {
+            background: var(--card); border-radius: 28px; padding: 30px;
+            grid-column: span 4; transition: 0.4s cubic-bezier(0.2, 1, 0.2, 1);
+            text-decoration: none; color: inherit; border: 1px solid rgba(0,0,0,0.05);
+            display: flex; flex-direction: column; justify-content: space-between;
+            overflow: hidden; position: relative;
+        }
+
+        .section-card:hover { transform: scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-color: var(--primary); }
         
-        nav { padding: 1.5rem 5%; border-bottom: 1px solid #eee; }
-        .back-btn { text-decoration: none; color: var(--primary); font-weight: bold; }
+        .section-card.large { grid-column: span 8; }
+        .section-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 20px; }
 
-        .container { max-width: 900px; margin: 0 auto; padding: 60px 5%; }
-        h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; margin-bottom: 10px; }
-        
-        .hero-banner { 
-            width: 100%; height: 350px; border-radius: 24px; 
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
-                        url('https://www.canada.ca/content/dam/themes/defence/caf/militaryhistory/dhh/flags/royal-banner-1812.png') center/cover;
-            margin-bottom: 40px; display: flex; align-items: flex-end; padding: 30px; box-sizing: border-box;
-        }
+        .badge { background: var(--primary); color: white; padding: 6px 12px; border-radius: 20px; font-size: 11px; font-weight: 800; align-self: flex-start; margin-bottom: 10px; text-transform: uppercase; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin: 10px 0; }
+        p { font-size: 0.95rem; opacity: 0.7; line-height: 1.5; }
 
-        .identity-card { 
-            background: #f9f9fb; border-radius: 20px; padding: 40px; 
-            margin-bottom: 30px; border: 1px solid #eee; 
-        }
-
-        .point-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .point { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
-        .point h3 { color: var(--map-red); margin-top: 0; font-size: 1.1rem; }
-
-        .quote-box { 
-            font-family: 'Playfair Display', serif; font-size: 1.5rem; text-align: center; 
-            padding: 40px; border-top: 1px solid #eee; border-bottom: 1px solid #eee; margin: 40px 0; font-style: italic;
-        }
+        /* Responsive */
+        @media (max-width: 1000px) { .section-card, .section-card.large { grid-column: span 12; } .search-container { display: none; } }
     </style>
 </head>
 <body>
 
 <nav>
-    <a href="index.html" class="back-btn">← RETURN TO HUB</a>
+    <div style="font-weight: 900; font-size: 1.4rem;">HISTORY<span style="color:var(--primary)">1812</span></div>
+    <div class="search-container">
+        <span>🔍</span>
+        
+    </div>
+    <div style="font-weight: bold; font-size: 0.9rem;">GRADE 7 EDITION</div>
 </nav>
 
-<div class="container">
-    <h1>Canadian Identity</h1>
-    <p style="font-size: 1.2rem; opacity: 0.8;">Before 1812, people in Canada were just British colonists. After the war, they were Canadians.</p>
+<header>
+    <h1>A Frontier on Fire.</h1>
+    <p>After the smoke cleared, a nation began to emerge. Explore how the War of 1812 became Canada's "War of Independence."</p>
+</header>
 
-    <div class="hero-banner">
-        <h2 style="color: white; margin: 0; font-family: 'Playfair Display'; font-size: 2.5rem;">Born of Conflict.</h2>
-    </div>
-
+<div class="bento-grid" id="contentArea">
     
-        <h2>How the War Shaped a Nation</h2>
-        <p>The War of 1812 is often called the "True Birth of Canada." It forced people from different backgrounds to decide what they stood for.</p>
-        
-        <div class="point-grid">
-            <div class="point">
-                <h3>1. Unity in Defense</h3>
-                <p>English-speaking colonists and French-speaking <i>Canadiens</i> fought side-by-side. This created a sense of shared purpose and increased loyalty to Britain.</p>
-            </div>
-            <div class="point">
-                <h3>2. We are NOT American</h3>
-                <p>The war solidified the idea that Canada would remain a monarchy under the British Crown rather than joining the American republic.</p>
-            </div>
-            <div class="point">
-                <h3>3. Heroes of Our Own</h3>
-                <p>Stories of <b>Sir Isaac Brock</b>, <b>Tecumseh</b>, and <b>Laura Secord</b> became legends that united people across the colony.</p>
-            </div>
-            <div class="point">
-                <h3>4. Border Security</h3>
-                <p>The war proved that the U.S. could not simply "march in" and take Canada. This led to a long period of peace and the eventual creation of the world's longest undefended border.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="quote-box">
-        "The War of 1812 was the moment we decided we were a distinct people with our own future."
-    </div>
-
     
-        <h3>Why we remember today</h3>
-        <p>Without the victories at places like Queenston Heights or Crysler's Farm, Canada likely would have become part of the United States. We celebrate this war because it protected the <span style="color:var(--map-red); font-weight: bold;">sovereignty</span> of our land.</p>
-    </div>
+    <a href="aftermath.html" class="section-card large searchable">
+        <span class="badge">Module 08</span>
+        <h2>Aftermath & The Birth of Identity</h2>
+        <p>The war acted as a "crucible," forging a distinct sense of being Canadian. Living through the American invasion made colonists realize they were <b>not</b> Americans. It sparked a shared history and a common pride in defending their homes, laying the groundwork for Confederation 50 years later.</p>
+        <img src="https://thecanadianencyclopedia.ca" alt="War Memorial">
+    </a>
+
+    <!-- Module 09: Loyalty & Unity -->
+    <a href="unity.html" class="section-card searchable">
+        <span class="badge">Module 09</span>
+        <h2>Loyalty & French-English Unity</h2>
+        <p>Why did loyalty to Britain increase? Fear of American republicanism pushed Canadians closer to the Crown. Surprisingly, French-Canadians and English-Canadians fought side-by-side (notably at Chateauguay), proving they could unite against a common threat to protect their unique way of life.</p>
+    </a>
+
+    <!-- Module 10: Why We Remember -->
+    <a href="remember.html" class="section-card searchable">
+        <span class="badge">Module 10</span>
+        <h2>Why We Remember Today</h2>
+        <p>We remember because without this war, Canada likely wouldn't exist as a separate country. It defined our borders and ensured that North America would remain a place of two distinct nations.</p>
+    </a>
+
+    <!-- Previous Modules (Condensed for focus) -->
+    <a href="heroes.html" class="section-card searchable">
+        <span class="badge">Module 04</span>
+        <h2>Legendary Figures</h2>
+        <p>Brock, Tecumseh, and Secord: The faces of resistance.</p>
+    </a>
+
+    <a href="firstnations.html" class="section-card searchable">
+        <span class="badge">Module 05</span>
+        <h2>Indigenous Perspective</h2>
+        <p>The tragic cost of the war for First Nations sovereignty.</p>
+    </a>
+
+    <a href="quiz.html" class="section-card large searchable" style="background: var(--primary); color: white;">
+        <span class="badge" style="background: white; color: var(--primary);">Interactive</span>
+        <h2>Test Your Knowledge</h2>
+        <p>Ready to prove you're a historian? Take the 10-question challenge on the Aftermath and Legacy of 1812.</p>
+    </a>
 </div>
+
+<footer style="background: #f5f5f7; padding: 40px 5%; text-align: center; border-top: 1px solid #ddd;">
+    <p>&copy; 2026 War of 1812 Digital Archive | All Rights Reserved</p>
+    <p><b>Created by: Satori Szeto and Lucas Lin</b></p>
+</footer>
+
+<script>
+    const searchBar = document.getElementById('searchBar');
+    const cards = document.querySelectorAll('.searchable');
+
+    searchBar.addEventListener('keyup', (e) => {
+        const searchString = e.target.value.toLowerCase();
+        cards.forEach(card => {
+            const title = card.querySelector('h2').innerText.toLowerCase();
+            const text = card.querySelector('p').innerText.toLowerCase();
+            card.style.display = (title.includes(searchString) || text.includes(searchString)) ? "flex" : "none";
+        });
+    });
+</script>
 
 </body>
 </html>
