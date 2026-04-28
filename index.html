@@ -2,40 +2,61 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="style.css">
-    <title>War of 1812 | A Digital Analysis test</title>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <title>THE 1812 EXPERIENCE</title>
 </head>
 <body>
 
-<nav>
-    <a href="index.html">The Context</a>
-    <a href="battles.html">The War Room</a>
-    <a href="impact.html">Legacy</a>
-</nav>
-
-<div class="hero">
-    <h1 style="font-size: 4.5rem;">FATE OF A CONTINENT</h1>
-    <p style="font-size: 1.4rem; max-width: 700px;">An In-Depth Investigation into the War of 1812</p>
+<div class="top-nav">
+    <div class="logo" style="font-weight: 900; font-size: 1.5rem;">WAR<span style="color: var(--gold);">1812</span></div>
+    <div class="search-container">
+        <span>🔍</span>
+        <input type="text" placeholder="Search battles, heroes, or treaties...">
+    </div>
+    <div class="menu">
+        <a href="index.html" style="margin-left: 20px; color: white; text-decoration: none;">Archive</a>
+        <a href="battles.html" style="margin-left: 20px; color: white; text-decoration: none;">War Room</a>
+    </div>
 </div>
 
-<section>
-    <h2>I. The Complex Origin: Beyond Trade</h2>
-    <p>While often simplified, the war began due to a volatile cocktail of <span style="color: var(--gold);">Napoleonic-era global politics</span>. The Royal Navy’s blockade of French-controlled Europe paralyzed American commerce, leading to the infamous <b>Chesapeake-Leopard Affair (1807)</b> where a British ship fired upon and boarded a U.S. vessel.</p>
+<div class="hero-visual">
+    <div>
+        <h1>FRONTIER <br> ON FIRE</h1>
+        <p style="font-size: 1.2rem; opacity: 0.7;">An Interactive Deep-Dive into North America's Greatest Conflict</p>
+        <br><br>
+        <a href="#explore" class="btn-modern">Launch Experience</a>
+    </div>
+</div>
+
+<div class="bento-grid" id="explore">
+    <div class="bento-item large" style="background: url('https://wikimedia.org') center/cover;">
+        <div style="position: absolute; bottom: 20px; left: 20px; background: rgba(0,0,0,0.7); padding: 20px; border-radius: 15px;">
+            <h3>Strategic Warfare</h3>
+            <p>Analysis of Queenston Heights and the defense of Upper Canada.</p>
+        </div>
+    </div>
     
-    <div class="primary-source">
-        "I have never been an advocate for war... but the period has arrived when it is no longer avoidable without the surrender of our rights as a sovereign nation." — <i>James Madison, 1812</i>
+    <div class="bento-item">
+        <h3 style="color: var(--gold);">01. Causes</h3>
+        <p>Analyze Impressment and the geopolitical spark of 1812.</p>
     </div>
 
-    <div class="content-grid">
-        <div class="glossary-card">
-            <h3>Maritime Grievances</h3>
-            <p><b>Impressment:</b> The forced recruitment of American sailors by the British Royal Navy under the claim they were British subjects. Over 6,000 Americans were seized between 1803-1812.</p>
-        </div>
-        <div class="glossary-card">
-            <h3>Territorial Expansion</h3>
-            <p><b>The War Hawks:</b> Radical congressmen like Henry Clay and John C. Calhoun who pushed for war to seize British North America (Canada) and end Indigenous resistance in the west.</p>
-        </div>
+    <div class="bento-item">
+        <h3 style="color: var(--gold);">02. Heroes</h3>
+        <p>Profiles on Brock, Tecumseh, and Secord.</p>
     </div>
-</section>
+
+    <div class="bento-item">
+        <h3 style="color: var(--gold);">03. Legacy</h3>
+        <p>How a stalemate birthed a Canadian Identity.</p>
+    </div>
+
+    <div class="bento-item large">
+        <h3>Digital Archive</h3>
+        <p>Explore high-resolution primary sources, letters, and artifacts from the front lines.</p>
+        <img src="https://unsplash.com" style="width: 100%; border-radius: 12px; margin-top: 15px;">
+    </div>
+</div>
 
 </body>
 </html>

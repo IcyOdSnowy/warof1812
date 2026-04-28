@@ -1,32 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
-    <title>The Battles | War of 1812</title>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <title>The War Room | Tactical Analysis</title>
+    <style>
+        /* Unique Page Styling */
+        .battle-header {
+            padding: 100px 5%;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),
+                        url('https://wikimedia.org') center/cover;
+        }
+        
+        .tactical-stats {
+            display: flex;
+            justify-content: space-between;
+            background: rgba(255,204,51,0.1);
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 15px;
+            font-size: 0.85rem;
+            border: 1px solid var(--gold);
+        }
+    </style>
 </head>
 <body>
 
-<nav>
-    <a href="index.html">← Back to Hub</a>
-    <a href="battles.html">Conflict Timeline</a>
-</nav>
-
-<section style="padding: 60px 10%;">
-    <h2 style="color: var(--gold); font-size: 3rem; text-align: center;">THE FIELDS OF GLORY</h2>
-    
-    <div style="background: var(--glass); padding: 40px; border-radius: 20px; margin-bottom: 40px;">
-        <h3>Queenston Heights (1812)</h3>
-        <img src="https://canadashistory.ca" class="feature-img" alt="Queenston Heights Painting">
-        <p>A pivotal British victory that halted the first major American invasion. While the Americans crossed the Niagara River to take the heights, they were eventually trapped against the cliffs by a combined force of British regulars and Mohawk warriors.</p>
-        <p><b>Key Fact:</b> This is where the "Saviour of Upper Canada," Sir Isaac Brock, fell in battle.</p>
+<div class="top-nav">
+    <div class="logo">WAR<span style="color: var(--gold);">1812</span></div>
+    <div class="search-container">
+        <span>🔍</span>
+        <input type="text" id="battleSearch" placeholder="Filter by battle or year...">
     </div>
+    <div class="menu">
+        <a href="index.html">The Context</a>
+        <a href="battles.html" style="color: var(--gold);">The War Room</a>
+    </div>
+</div>
 
-    <div style="background: var(--glass); padding: 40px; border-radius: 20px;">
-        <h3>The Long Walk: Laura Secord (1813)</h3>
-        <img src="https://jstor.org" class="feature-img" alt="Laura Secord's Warning">
-        <p>Not every battle was won with a musket. After overhearing American plans for a surprise attack at Beaver Dams, Laura Secord walked 30km through treacherous terrain to warn the British forces.</p>
+<div class="battle-header">
+    <h1 style="font-size: 4rem; margin: 0;">STRATEGIC <br> OPERATIONS</h1>
+    <p style="opacity: 0.7;">Interactive analysis of the frontier's most decisive engagements.</p>
+</div>
+
+<section>
+    <div class="bento-grid">
+        <!-- Battle 1: Queenston Heights -->
+        <div class="bento-item large">
+            <h2 style="color: var(--gold);">Queenston Heights (Oct 13, 1812)</h2>
+            <p>The first major American invasion. Despite outnumbering the defenders, the US forces were trapped against the Niagara cliffs.</p>
+            <div class="primary-source">
+                "Victory is certain, and the Americans will be taught a lesson in humility." — <i>Maj. Gen. Isaac Brock</i>
+            </div>
+            <div class="tactical-stats">
+                <span>⚔️ Outcome: British Victory</span>
+                <span>🚩 Key Figure: Sir Isaac Brock</span>
+            </div>
+        </div>
+
+        <!-- Battle 2: The Thames -->
+        <div class="bento-item">
+            <h3>Battle of the Thames (1813)</h3>
+            <p>A tragic turning point for Indigenous resistance. The death of <span class="highlight">Tecumseh</span> effectively ended his dream of a Pan-Indigenous Confederacy.</p>
+            <small>Strategically shifted control of the Northwest to the US.</small>
+        </div>
+
+        <!-- Battle 3: York (Toronto) -->
+        <div class="bento-item">
+            <h3>Burning of York (1813)</h3>
+            <p>US forces captured and burned the capital of Upper Canada. This act directly led to the British retaliatory burning of Washington D.C..</p>
+        </div>
+
+        <!-- Battle 4: Lundy's Lane -->
+        <div class="bento-item large" style="background: rgba(163, 22, 33, 0.1);">
+            <h2 style="color: var(--gold);">Lundy's Lane (July 25, 1814)</h2>
+            <p>The bloodiest battle of the war, fought into the night near Niagara Falls. It was a tactical draw, but a strategic British victory as it halted the final American invasion.</p>
+            <div class="tactical-stats">
+                <span>💀 Casualties: ~1,700 total</span>
+                <span>🌙 Status: Night Engagement</span>
+            </div>
+        </div>
     </div>
 </section>
+
+<script>
+    // Simple modern search filter logic
+    document.getElementById('battleSearch').addEventListener('keyup', function() {
+        let filter = this.value.toLowerCase();
+        let items = document.querySelectorAll('.bento-item');
+        
+        items.forEach(item => {
+            let text = item.innerText.toLowerCase();
+            item.style.display = text.includes(filter) ? "block" : "none";
+        });
+    });
+</script>
 
 </body>
 </html>
