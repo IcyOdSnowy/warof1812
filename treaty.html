@@ -160,4 +160,49 @@
 </footer>
 
 </body>
+<script>
+    // Disable right-click menu (context menu)
+   document.addEventListener('contextmenu', event => event.preventDefault());
+   
+   // Detect if Developer Tools are opened using shortcuts or console methods
+   let devToolsOpened = false;
+   const element = new Image();
+   Object.defineProperty(element, 'id', {
+       get: function() {
+           devToolsOpened = true;
+           closeGame(); // Close the game if Developer Tools are opened
+       }
+   });
+   
+   // Function to check for Developer Tools every second
+   setInterval(() => {
+       devToolsOpened = false;
+       console.log(element); // This triggers the get function if Dev Tools are open
+       if (devToolsOpened) {
+           closeGame();
+       }
+   }, 1000);
+   
+   // Function to close the game or tab
+   function closeGame() {
+       alert("Sorry! But it doesn't look like you have permission to view the code. If you think this is a mistake, please contact the creators of this project.");
+       window.close(); // Close the tab (might be blocked in some browsers)
+       window.location.href = "table_of_contents.html"; // Fallback to redirect to a blank page
+   }
+   
+   // Block certain key combinations (Ctrl+Shift+I, Ctrl+U, F12, etc.)
+   document.addEventListener('keydown', (event) => {
+       if (
+           (event.ctrlKey && event.shiftKey && event.keyCode === 73) || // Ctrl+Shift+I
+           (event.ctrlKey && event.keyCode === 85) || // Ctrl+U
+           (event.keyCode === 123) || // F12
+           (event.ctrlKey && event.shiftKey && event.keyCode === 74) // Ctrl+Shift+J (for Console)
+       ) {
+           event.preventDefault(); // Prevent the default action of opening Dev Tools or View Source
+           closeGame();
+       }
+   });
+   
+   
+   </script>
 </html>
