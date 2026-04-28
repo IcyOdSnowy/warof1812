@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treaty | 1812 Digital Archive</title>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #007AFF; /* Tech Blue */
+            --bg: #ffffff;
+            --card: #f5f5f7;
+            --text: #1d1d1f;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1rem 5%; background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(20px); position: sticky; top: 0; z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        header {
+            padding: 80px 5% 40px;
+            background: var(--card);
+            text-align: center;
+        }
+
+        header h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; margin: 0; }
+        header p { font-size: 1.2rem; max-width: 700px; margin: 20px auto; opacity: 0.7; }
+
+        .bento-grid {
+            display: grid; grid-template-columns: repeat(12, 1fr);
+            gap: 20px; padding: 40px 5% 80px;
+        }
+
+        .card {
+            background: var(--card); border-radius: 28px; padding: 35px;
+            grid-column: span 6; border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .card.full { grid-column: span 12; }
+        
+        .signing-flex {
+            display: flex; gap: 40px; align-items: center;
+        }
+
+        .signing-flex img {
+            width: 40%; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .impact-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;
+        }
+
+        .impact-item {
+            background: white; padding: 25px; border-radius: 20px;
+            border: 1px solid rgba(0,0,0,0.05); transition: 0.3s;
+        }
+
+        .impact-item:hover { border-color: var(--primary); transform: translateY(-5px); }
+
+        .badge { 
+            background: var(--primary); color: white; padding: 6px 12px; 
+            border-radius: 20px; font-size: 11px; font-weight: 800; 
+            margin-bottom: 15px; text-transform: uppercase; display: inline-block;
+        }
+
+        h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin: 0 0 20px; }
+        h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--primary); margin-top: 0; }
+        
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; opacity: 0.8; }
+
+        footer { text-align: center; padding: 40px; opacity: 0.5; font-size: 0.8rem; }
+
+        @media (max-width: 900px) {
+            .card, .impact-grid { grid-column: span 12; grid-template-columns: 1fr; }
+            .signing-flex { flex-direction: column; }
+            .signing-flex img { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div style="font-weight: 900; font-size: 1.4rem;">HISTORY<span style="color:var(--primary)">1812</span></div>
+    <a href="index.html" style="text-decoration: none; color: var(--primary); font-weight: bold; font-size: 0.9rem;">← BACK TO ARCHIVE</a>
+</nav>
+
+<header>
+    <span class="badge">Module 07</span>
+    <h1>The Treaty of Ghent.</h1>
+    <p>Peace on Christmas Eve, 1814. A diplomatic end to a brutal frontier war.</p>
+</header>
+
+<div class="bento-grid">
+
+    <!-- Signing Details -->
+    <div class="card full">
+        <div class="signing-flex">
+            <img src="https://wikimedia.org" alt="Signing of the Treaty">
+            <div>
+                <h2>The Agreement</h2>
+                <p><strong>Signed:</strong> December 24, 1814</p>
+                <p><strong>Location:</strong> Ghent, Belgium</p>
+                <p><strong>Parties:</strong> Great Britain and the United States</p>
+                <p style="margin-top: 20px; font-style: italic; color: var(--primary); font-weight: bold;">"Status Quo Ante Bellum"</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- What it Said -->
+    <div class="card">
+        <h2>Terms of Peace</h2>
+        <p>The treaty returned relations to their pre-war state. Neither side gained or lost land.</p>
+        <ul>
+            <li><strong>Immediate Cessation:</strong> An end to all fighting on land and sea.</li>
+            <li><strong>Restoration:</strong> All conquered forts and islands were returned.</li>
+            <li><strong>Borders:</strong> The 1811 boundary lines remained unchanged.</li>
+            <li><strong>Silence:</strong> Major causes like <em>impressment</em> were not addressed.</li>
+        </ul>
+    </div>
+
+    <!-- Impact for Canada -->
+    <div class="card">
+        <h2>Impact on Canada</h2>
+        <div class="impact-grid">
+            <div class="impact-item">
+                <h3>Survival</h3>
+                <p>Ensured the Canadas remained British territory and were not annexed.</p>
+            </div>
+            <div class="impact-item">
+                <h3>Identity</h3>
+                <p>Fostered a new shared pride between French and English Canadians.</p>
+            </div>
+            <div class="impact-item">
+                <h3>The Militia Myth</h3>
+                <p>The belief that local citizens, not British regulars, won the war.</p>
+            </div>
+            <div class="impact-item" style="border-color: #ff3b30;">
+                <h3 style="color: #ff3b30;">Indigenous Betrayal</h3>
+                <p>Indigenous allies were excluded; their lands remained unprotected.</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    Data sourced from The Canadian Encyclopedia and National Archives.
+</footer>
+
+</body>
+</html>

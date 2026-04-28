@@ -1,72 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <link rel="stylesheet" href="style.css">
-   <link href="https://googleapis.com" rel="stylesheet">
-   <title>SIX SEVEN</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1812 | The Digital Archive</title>
+    <!-- Modern Font: Inter for UI, Playfair for History -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #007AFF; /* Tech Blue */
+            --bg: #ffffff;
+            --card: #f5f5f7;
+            --text: #1d1d1f;
+            --accent: #ffcc00;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation & Functional Search */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1rem 5%; background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(20px); position: sticky; top: 0; z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .search-container { display: flex; align-items: center; background: #f2f2f7; padding: 8px 15px; border-radius: 12px; width: 300px; }
+        .search-container input { background: none; border: none; outline: none; margin-left: 10px; width: 100%; }
+
+        /* Hero Section */
+        header {
+            height: 70vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), 
+                        url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAHFUx60A5-LswacxCoFe7Y_c613mtOJ1Ttw&s') center/cover;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; color: white;
+        }
+
+        header h1 { font-family: 'Playfair Display', serif; font-size: 5rem; margin: 0; }
+        header p { font-size: 1.2rem; max-width: 700px; opacity: 0.9; }
+
+        /* The 10 Sections (Bento Grid) */
+        .bento-grid {
+            display: grid; grid-template-columns: repeat(12, 1fr);
+            gap: 20px; padding: 60px 5%;
+        }
+
+        .section-card {
+            background: var(--card); border-radius: 28px; padding: 30px;
+            grid-column: span 4; transition: 0.4s cubic-bezier(0.2, 1, 0.2, 1);
+            text-decoration: none; color: inherit; border: 1px solid rgba(0,0,0,0.05);
+            display: flex; flex-direction: column; justify-content: space-between;
+            overflow: hidden; position: relative;
+        }
+
+        .section-card:hover { transform: scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-color: var(--primary); }
+        
+        .section-card.large { grid-column: span 8; }
+        .section-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 20px; }
+
+        .badge { background: var(--primary); color: white; padding: 6px 12px; border-radius: 20px; font-size: 11px; font-weight: 800; align-self: flex-start; margin-bottom: 10px; text-transform: uppercase; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin: 10px 0; }
+        p { font-size: 0.95rem; opacity: 0.7; }
+
+        /* Responsive */
+        @media (max-width: 1000px) { .section-card, .section-card.large { grid-column: span 12; } .search-container { display: none; } }
+    </style>
 </head>
 <body>
 
+<nav>
+    <div style="font-weight: 900; font-size: 1.4rem;">HISTORY<span style="color:var(--primary)">1812</span></div>
+    <div class="search-container">
+        <span>🔍</span>
+        <input type="text" id="searchBar" placeholder="Search archive (e.g. 'Brock')...">
+    </div>
+    <div style="font-weight: bold; font-size: 0.9rem;">GRADE 7 EDITION</div>
+</nav>
 
-<div class="top-nav">
-   <div class="logo" style="font-weight: 900; font-size: 1.5rem;">WAR<span style="color: var(--gold);">1812</span></div>
-   <div class="search-container">
-       <span>🔍</span>
-       <input type="text" placeholder="Search battles, heroes, or treaties...">
-   </div>
-   <div class="menu">
-       <a href="index.html" style="margin-left: 20px; color: white; text-decoration: none;">Archive</a>
-       <a href="battles.html" style="margin-left: 20px; color: white; text-decoration: none;">War Room</a>
-   </div>
+<header>
+    <h1>A Frontier on Fire.</h1>
+    <p>Welcome to the definitive digital textbook on the War of 1812. Explore 10 interactive modules covering the heroes, battles, and legends that defined North America.</p>
+</header>
+
+<div class="bento-grid" id="contentArea">
+    <!-- 1. What was the War? -->
+    <a href="intro.html" class="section-card large searchable">
+        <span class="badge">Module 01</span>
+        <h2>What was the War of 1812?</h2>
+        <p>A brief overview of why Britain and the US went to war and where the conflict took place.</p>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvEjrNzkHs_Csjnqy4LLQLnkp3IQfZ-xVyaQ&s" alt="Naval Battle">
+    </a>
+
+    <!-- 2. Causes -->
+    <a href="causes.html" class="section-card searchable">
+        <span class="badge">Module 02</span>
+        <h2>Causes of the War</h2>
+          <img src="https://images.squarespace-cdn.com/content/v1/5f58d5eaebed3255148148f6/f68ea0ed-8637-4617-aefb-e12d4e585c80/M-Sum20-Ft.-Erie-LEAD-scaled.jpg" alt="Queenston Heights">
+        <p>Analyze Impressment, Jingoism, and the trade wars of the 1800s.</p>
+    </a>
+
+    <!-- 3. Key Battles -->
+    <a href="battles.html" class="section-card searchable">
+        <span class="badge">Module 03</span>
+        <h2>The Battlefront</h2>
+        <p>Explore Queenston Heights, York, and Lundy's Lane.</p>
+    </a>
+
+    <!-- 4. Heroes -->
+    <a href="heroes.html" class="section-card searchable">
+        <span class="badge">Module 04</span>
+        <h2>Legendary Figures</h2>
+        <p>Meet Sir Isaac Brock, Tecumseh, and Laura Secord.</p>
+    </a>
+
+    <!-- 5. First Nations -->
+    <a href="firstnations.html" class="section-card searchable">
+        <span class="badge">Module 05</span>
+        <h2>Indigenous Perspective</h2>
+        <p>The vital role of First Nations warriors in defending the border.</p>
+    </a>
+
+    <!-- 6. Soldier Life -->
+    <a href="soldier.html" class="section-card searchable">
+        <span class="badge">Module 06</span>
+        <h2>Life as a Soldier</h2>
+        <p>Hardtack, muskets, and the harsh reality of the militia.</p>
+    </a>
+
+    <!-- 7. Treaty of Ghent -->
+    <a href="treaty.html" class="section-card searchable">
+        <span class="badge">Module 07</span>
+        <h2>The Treaty of Ghent</h2>
+        <p>How the war ended and why nobody technically won.</p>
+    </a>
+
+    <!-- 8. Aftermath -->
+    <a href="aftermath.html" class="section-card searchable">
+        <span class="badge">Module 08</span>
+        <h2>Canadian Identity</h2>
+        <p>How this war helped create the Canada we know today.</p>
+    </a>
+
+    <!-- 9. The Quiz -->
+    <a href="quiz.html" class="section-card large searchable" style="background: var(--primary); color: white;">
+        <span class="badge" style="background: white; color: var(--primary);">Interactive</span>
+        <h2>Test Your Knowledge</h2>
+        <p>Ready to prove you're a historian? Take the 10-question challenge.</p>
+    </a>
+
+    <!-- 10. Fun Extras -->
+    <a href="extras.html" class="section-card searchable">
+        <span class="badge">Bonus</span>
+        <h2>Historical Artifacts</h2>
+        <p>Memes, letters, and "Did You Know" facts about the war.</p>
+    </a>
 </div>
 
+<script>
+    // THE SEARCH LOGIC - Real-time filtering
+    const searchBar = document.getElementById('searchBar');
+    const cards = document.querySelectorAll('.searchable');
 
-<div class="hero-visual">
-   <div>
-       <h1>FRONTIER <br> ON FIRE</h1>
-       <p style="font-size: 1.2rem; opacity: 0.7;">An Interactive Deep-Dive into North America's Greatest Conflict</p>
-       <br><br>
-       <a href="#explore" class="btn-modern">Launch Experience</a>
-   </div>
-</div>
-
-
-<div class="bento-grid" id="explore">
-   <div class="bento-item large" style="background: url('https://wikimedia.org') center/cover;">
-       <div style="position: absolute; bottom: 20px; left: 20px; background: rgba(0,0,0,0.7); padding: 20px; border-radius: 15px;">
-           <h3>Strategic Warfare</h3>
-           <p>Analysis of Queenston Heights and the defense of Upper Canada.</p>
-       </div>
-   </div>
-  
-   <div class="bento-item">
-       <h3 style="color: var(--gold);">01. Causes</h3>
-       <p>Analyze Impressment and the geopolitical spark of 1812.</p>
-   </div>
-
-
-   <div class="bento-item">
-       <h3 style="color: var(--gold);">02. Heroes</h3>
-       <p>Profiles on Brock, Tecumseh, and Secord.</p>
-   </div>
-
-
-   <div class="bento-item">
-       <h3 style="color: var(--gold);">03. Legacy</h3>
-       <p>How a stalemate birthed a Canadian Identity.</p>
-   </div>
-
-
-   <div class="bento-item large">
-       <h3>Digital Archive</h3>
-       <p>Explore high-resolution primary sources, letters, and artifacts from the front lines.</p>
-       <img src="https://unsplash.com" style="width: 100%; border-radius: 12px; margin-top: 15px;">
-   </div>
-</div>
-
+    searchBar.addEventListener('keyup', (e) => {
+        const searchString = e.target.value.toLowerCase();
+        cards.forEach(card => {
+            const title = card.querySelector('h2').innerText.toLowerCase();
+            const text = card.querySelector('p').innerText.toLowerCase();
+            if (title.includes(searchString) || text.includes(searchString)) {
+                card.style.display = "flex";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    });
+</script>
 
 </body>
+<footer style="background: #f5f5f7; padding: 40px 5%; text-align: center; border-top: 1px solid #ddd; position: relative;">
+    <p>&copy; 2026 War of 1812 Digital Archive | All Rights Reserved</p>
+    <p><b>Created by: Satori Szeto and Lucas Lin</b></p>
+    
+    <!-- This is the Among Us character - Made it 20px so you can actually find it! -->
+    <img src="https://www.citypng.com/public/uploads/preview/red-among-us-character-png-733961695143060l33uuuh2kp.png" 
+         style="width: 50px; height: auto; position: absolute; bottom: 10px; right: 15px; cursor: pointer; display: block !important; visibility: visible !important;" 
+         alt="sus">
+</footer>
 </html>
-
-
-

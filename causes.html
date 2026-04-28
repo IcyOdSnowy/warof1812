@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Causes | 1812 Digital Archive</title>
+    <!-- Modern Font: Inter for UI, Playfair for History -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #007AFF; /* Tech Blue */
+            --bg: #ffffff;
+            --card: #f5f5f7;
+            --text: #1d1d1f;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1rem 5%; background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(20px); position: sticky; top: 0; z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        /* Header */
+        header {
+            padding: 80px 5% 40px;
+            background: var(--card);
+            text-align: center;
+        }
+
+        header h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; margin: 0; }
+        header p { font-size: 1.2rem; max-width: 700px; margin: 20px auto; opacity: 0.7; }
+
+        /* Bento Grid */
+        .bento-grid {
+            display: grid; grid-template-columns: repeat(12, 1fr);
+            gap: 20px; padding: 40px 5% 80px;
+        }
+
+        .section-card {
+            background: var(--card); border-radius: 28px; padding: 35px;
+            grid-column: span 12; border: 1px solid rgba(0,0,0,0.05);
+            display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;
+        }
+
+        .section-card.reverse { direction: rtl; }
+        .section-card.reverse .text-box { direction: ltr; }
+
+        .vocab-card {
+            grid-column: span 4; background: white; border-radius: 28px; padding: 30px;
+            border: 1px solid rgba(0,0,0,0.1); text-align: center;
+        }
+
+        .badge { 
+            background: var(--primary); color: white; padding: 6px 12px; 
+            border-radius: 20px; font-size: 11px; font-weight: 800; 
+            align-self: flex-start; margin-bottom: 15px; text-transform: uppercase; 
+        }
+
+        h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin: 0 0 20px; color: var(--text); }
+        h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--primary); margin: 0 0 10px; }
+
+        .image-box img {
+            width: 100%; height: auto; border-radius: 20px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        ul { padding-left: 20px; margin: 0; }
+        li { margin-bottom: 15px; font-size: 1rem; opacity: 0.8; }
+        li strong { opacity: 1; color: var(--text); }
+
+        /* Mobile Adjustments */
+        @media (max-width: 1000px) {
+            .section-card { grid-template-columns: 1fr; padding: 25px; }
+            .section-card.reverse { direction: ltr; }
+            .vocab-card { grid-column: span 12; }
+            header h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div style="font-weight: 900; font-size: 1.4rem;">HISTORY<span style="color:var(--primary)">1812</span></div>
+    <a href="index.html" style="text-decoration: none; color: var(--primary); font-weight: bold; font-size: 0.9rem;">← BACK TO ARCHIVE</a>
+</nav>
+
+<header>
+    <span class="badge">Module 02</span>
+    <h1>The Origins of Conflict.</h1>
+    <p>A global struggle between empires fueled by trade, territory, and a fight for sovereignty.</p>
+</header>
+
+<div class="bento-grid">
+    <!-- Section 1: Long-term Causes -->
+    <div class="section-card">
+        <div class="text-box">
+            <h2>Long-Term Causes</h2>
+            <p>The roots of the war were planted long before 1812, largely driven by global power struggles and American growth.</p>
+            <ul>
+                <li><strong>Napoleonic Wars:</strong> Britain and France's global struggle led to naval blockades that crippled neutral trade.</li>
+                <li><strong>Trade Restrictions:</strong> British "Orders in Council" required neutral ships to pay fees in Britain.</li>
+                <li><strong>U.S. Expansionism:</strong> Americans desired land in Canada and Indigenous territories.</li>
+            </ul>
+        </div>
+        <div class="image-box">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTILzXuFTOqC6ALl2k2Je7wtgEbcpqpizwOcg&s" alt="Napoleonic naval battle">
+        </div>
+    </div>
+
+    <!-- Section 2: Immediate Causes -->
+    <div class="section-card reverse">
+        <div class="text-box">
+            <h2>Immediate Causes</h2>
+            <p>Tensions broke due to violations of <strong>sovereignty</strong> and political pressure at home.</p>
+            <ul>
+                <li><strong>Impressment:</strong> The Royal Navy seized American sailors, claiming they were British deserters.</li>
+                <li><strong>First Nations Conflict:</strong> British support for Indigenous resistance in the Northwest Territory infuriated the US.</li>
+                <li><strong>Jingoism:</strong> "War Hawks" in Congress pushed for war to restore national honor.</li>
+            </ul>
+        </div>
+        <div class="image-box">
+            <img src="https://www.archives.gov/files/publications/prologue/2012/summer/images/1812-impressment-pyle-l.jpg" alt="British officers impressing sailors">
+        </div>
+    </div>
+
+    <!-- Section 3: Key Vocabulary -->
+    <div class="vocab-card">
+        <h3>Impressment</h3>
+        <p>Forcing men into military service; a primary grievance against the British Navy.</p>
+    </div>
+
+    <div class="vocab-card">
+        <h3>Jingoism</h3>
+        <p>Extreme, aggressive patriotism, often pushing for a warlike foreign policy.</p>
+    </div>
+
+    <div class="vocab-card">
+        <h3>Sovereignty</h3>
+        <p>The independent authority of a state to govern its own territory and people.</p>
+    </div>
+</div>
+
+</body>
+</html>

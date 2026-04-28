@@ -1,41 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css">
-    <title>Tactical Archive | War Room</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Battlefront | The Digital Archive</title>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #007AFF;
+            --bg: #ffffff;
+            --card: #f5f5f7;
+            --text: #1d1d1f;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+        }
+
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1rem 5%; background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(20px); position: sticky; top: 0; z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .back-btn { text-decoration: none; color: var(--primary); font-weight: bold; }
+
+        header {
+            padding: 80px 5% 40px;
+            text-align: center;
+        }
+
+        header h1 { font-family: 'Playfair Display', serif; font-size: 4rem; margin: 0; }
+
+        .bento-grid {
+            display: grid; grid-template-columns: repeat(12, 1fr);
+            gap: 20px; padding: 20px 5% 60px;
+        }
+
+        .battle-card {
+            background: var(--card); border-radius: 28px; padding: 30px;
+            grid-column: span 4; border: 1px solid rgba(0,0,0,0.05);
+            display: flex; flex-direction: column;
+        }
+
+        .battle-card.large { grid-column: span 8; }
+        .battle-card img { width: 100%; height: 250px; object-fit: cover; border-radius: 15px; margin-bottom: 20px; }
+
+        .badge { background: var(--primary); color: white; padding: 6px 12px; border-radius: 20px; font-size: 11px; font-weight: 800; align-self: flex-start; margin-bottom: 10px; text-transform: uppercase; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin: 10px 0; }
+        p { font-size: 0.95rem; opacity: 0.7; line-height: 1.6; }
+
+        footer {
+            background: #f5f5f7; padding: 40px 5%; text-align: center; border-top: 1px solid #ddd; position: relative;
+        }
+    </style>
 </head>
 <body>
 
 <nav>
-    <div style="font-family:'Cinzel';">TACTICAL ARCHIVE</div>
-    <a href="index.html">← HOME</a>
+    <a href="index.html" class="back-btn">← RETURN TO HUB</a>
+    <div style="font-weight: 900; font-size: 1.4rem;">TACTICAL<span style="color:var(--primary)">ROOM</span></div>
 </nav>
 
-<section style="padding: 50px 5%;">
-    <h2>Decisive Engagements</h2>
-    <div class="bento-grid">
-        <!-- Queenston Heights -->
-        <div class="bento-card">
-            <img src="https://wikimedia.org" class="card-img">
-            <div class="card-content">
-                <h3>Queenston Heights (1812)</h3>
-                <p><b>Strategic Impact:</b> The defense of the Niagara frontier. British regulars and <b>Six Nations warriors</b> repelled the invasion, though Sir Isaac Brock fell in the charge.</p>
-                <p style="font-size:0.9rem; border-top:1px solid #ddd; padding-top:10px;">
-                    <b>Primary Source:</b> "Push on, brave York volunteers!" — Brock's final words.
-                </p>
-            </div>
-        </div>
+<header>
+    <h1>The Fields of Glory.</h1>
+    <p>Strategic analysis of the most decisive engagements on the Canadian frontier.</p>
+</header>
 
-        <!-- Battle of the Thames -->
-        <div class="bento-card">
-            <img src="https://wikimedia.org" class="card-img">
-            <div class="card-content">
-                <h3>Battle of the Thames (1813)</h3>
-                <p>The death of <b>Tecumseh</b> here shattered the First Nations confederacy, allowing Americans to secure the Northwest.</p>
-            </div>
-        </div>
+<div class="bento-grid">
+    <!-- 1. Detroit -->
+    <div class="battle-card large">
+        <span class="badge">Bluff & Strategy</span>
+        <h2>The Siege of Detroit</h2>
+        <p><b>The Trick:</b> General Brock and Tecumseh used clever deceptions to make their force look massive. They marched the same group of warriors in a circle through a forest opening multiple times. Terrified, the Americans surrendered without a single shot being fired.</p>
+         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkRF1H-ca17TYYX-dz79cELKCIC4GDQ9nJCw&s" alt="Laura Secord" style="height: 300px;">
     </div>
-</section>
+
+    <!-- 2. Queenston Heights -->
+    <div class="battle-card">
+        <span class="badge">Oct 1812</span>
+        <h2>Queenston Heights</h2>
+        <p>The site of Sir Isaac Brock’s heroic final charge. Though Brock fell, the British and Mohawk warriors trapped the American army against the Niagara cliffs.</p>
+       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-SmF2WjqrxrusTSqrQBK32PC0vF2uODKIAA&s" alt="Queenston Heights">
+    </div>
+
+    <!-- 3. York -->
+    <div class="battle-card">
+        <span class="badge">Retaliation</span>
+        <h2>Battle of York</h2>
+        <p>US forces burned the public buildings of modern-day Toronto. This "scorched earth" tactic directly led to the British burning Washington D.C. a year later.</p>
+            <img src="https://macleans.mblycdn.com/uploads/mac/2012/03/MAC10_NATNOTE01_wide.jpg" alt="Laura Secord" style="height: 300px;">
+    </div>
+
+    <!-- 4. Beaver Dams -->
+    <div class="battle-card large">
+        <img src="https://www.ola.org/sites/default/files/pppr-photo/Laura%20Secord.jpg" alt="Laura Secord" style="height: 450px;">
+        
+        <span class="badge">Intelligence</span>
+        <h2>Battle of Beaver Dams</h2>
+        <p>After Laura Secord walked 30km to warn of a surprise attack, Indigenous warriors ambushed the Americans in the woods. Nearly the entire US force surrendered to a group they never even saw.</p>
+    </div>
+
+    <!-- 5. Lundy's Lane -->
+    <div class="battle-card">
+        <span class="badge">The Bloodiest</span>
+        <h2>Lundy's Lane</h2>
+        <p>Fought into the pitch-black night near Niagara Falls. It was the deadliest battle on Canadian soil, ending the final American attempt to invade the Niagara peninsula.</p>
+    <img src="https://www.niagarafallstourism.com/sites/default/files/styles/wide/public/2025-06/Lundy%27s%20Lane%20%5BMEMBER%5D.jpg?itok=KMSIEiA0" alt="Laura Secord" style="height: 250px;">
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2026 War of 1812 Digital Archive | All Rights Reserved</p>
+    <p><b>Created by: Satori Szeto and Lucas Lin</b></p>
+    <!-- The Easter Egg -->
+    <img src="https://gstatic.com" 
+         style="width: 10px; opacity: 0.4; position: absolute; bottom: 8px; right: 8px; filter: grayscale(100%);" 
+         alt="sus">
+</footer>
 
 </body>
 </html>

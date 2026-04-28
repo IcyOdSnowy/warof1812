@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heroes | 1812 Digital Archive</title>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #007AFF; /* Tech Blue */
+            --bg: #ffffff;
+            --card: #f5f5f7;
+            --text: #1d1d1f;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1rem 5%; background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(20px); position: sticky; top: 0; z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        header {
+            padding: 80px 5% 40px;
+            background: var(--card);
+            text-align: center;
+        }
+
+        header h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; margin: 0; }
+        header p { font-size: 1.2rem; max-width: 700px; margin: 20px auto; opacity: 0.7; }
+
+        .bento-grid {
+            display: grid; grid-template-columns: repeat(12, 1fr);
+            gap: 25px; padding: 40px 5% 80px;
+        }
+
+        .figure-card {
+            background: var(--card); border-radius: 28px; padding: 40px;
+            grid-column: span 12; border: 1px solid rgba(0,0,0,0.05);
+            display: grid; grid-template-columns: 320px 1fr; gap: 40px; align-items: center;
+        }
+
+        .figure-img {
+            width: 100%; height: 400px; object-fit: cover;
+            border-radius: 20px; box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .badge { 
+            background: var(--primary); color: white; padding: 6px 12px; 
+            border-radius: 20px; font-size: 11px; font-weight: 800; 
+            margin-bottom: 15px; text-transform: uppercase; display: inline-block;
+        }
+
+        h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin: 0 0 5px; }
+        .tagline { font-style: italic; color: var(--primary); font-weight: 700; margin-bottom: 20px; display: block; }
+        
+        .significance {
+            background: white; padding: 25px; border-radius: 18px;
+            border-left: 5px solid var(--primary); margin-top: 20px;
+            font-size: 0.95rem; box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+
+        @media (max-width: 1000px) {
+            .figure-card { grid-template-columns: 1fr; padding: 30px; text-align: center; }
+            .figure-img { height: 300px; }
+            header h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div style="font-weight: 900; font-size: 1.4rem;">HISTORY<span style="color:var(--primary)">1812</span></div>
+    <a href="index.html" style="text-decoration: none; color: var(--primary); font-weight: bold; font-size: 0.9rem;">← BACK TO ARCHIVE</a>
+</nav>
+
+<header>
+    <span class="badge">Module 04</span>
+    <h1>Legendary Figures.</h1>
+    <p>Meet the defenders, visionaries, and icons who shaped the fate of North America.</p>
+</header>
+
+<div class="bento-grid">
+
+    <!-- Sir Isaac Brock -->
+    <div class="figure-card">
+        <img src="https://wikimedia.org" class="figure-img" alt="Sir Isaac Brock">
+        <div class="info">
+            <h2>Sir Isaac Brock</h2>
+            <span class="tagline">"The Hero of Upper Canada"</span>
+            <p>A brilliant British Army officer and administrator who took command of the defense of Upper Canada early in the war.</p>
+            <div class="significance">
+                <strong>Why he is significant:</strong> He captured Detroit without a fight through psychological warfare and secured the province's safety before falling at the Battle of Queenston Heights.
+            </div>
+        </div>
+    </div>
+
+    <!-- Tecumseh -->
+    <div class="figure-card">
+        <img src="https://wikimedia.org" class="figure-img" alt="Tecumseh">
+        <div class="info">
+            <h2>Tecumseh</h2>
+            <span class="tagline">Shawnee Leader and Visionary</span>
+            <p>A charismatic leader who sought to unite Indigenous nations into a confederacy to resist American westward expansion and defend their sovereign lands.</p>
+            <div class="significance">
+                <strong>Why he is significant:</strong> He formed a critical alliance with Isaac Brock, providing the warriors and intelligence needed to capture Detroit and halt American invasions.
+            </div>
+        </div>
+    </div>
+
+    <!-- Laura Secord -->
+    <div class="figure-card">
+        <img src="https://wikimedia.org" class="figure-img" alt="Laura Secord">
+        <div class="info">
+            <h2>Laura Secord</h2>
+            <span class="tagline">Loyalist Heroine</span>
+            <p>A militia officer's wife who overheard American plans for a surprise attack while forced to house enemy soldiers.</p>
+            <div class="significance">
+                <strong>Why she is significant:</strong> She walked 32 kilometers through dangerous territory to warn the British, leading to the American defeat at the Battle of Beaver Dams.
+            </div>
+        </div>
+    </div>
+
+    <!-- Lieutenant-Colonel John By -->
+    <div class="figure-card">
+        <img src="https://wikimedia.org" class="figure-img" alt="John By">
+        <div class="info">
+            <h2>Lieutenant-Colonel John By</h2>
+            <span class="tagline">Engineer and Founder of Ottawa</span>
+            <p>An officer of the Royal Engineers tasked with creating a secure supply route between Montreal and Kingston.</p>
+            <div class="significance">
+                <strong>Why he is significant:</strong> He oversaw the monumental construction of the Rideau Canal, a masterpiece of 19th-century engineering that ensured Canada's long-term military defense.
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

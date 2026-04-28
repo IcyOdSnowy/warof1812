@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soldier Life | 1812 Digital Archive</title>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #007AFF;
+            --bg: #ffffff;
+            --card: #f5f5f7;
+            --text: #1d1d1f;
+            --accent: #ff3b30;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1rem 5%; background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(20px); position: sticky; top: 0; z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        header {
+            padding: 80px 5% 40px;
+            background: var(--card);
+            text-align: center;
+        }
+
+        header h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; margin: 0; }
+        header p { font-size: 1.2rem; max-width: 700px; margin: 20px auto; opacity: 0.7; }
+
+        .bento-grid {
+            display: grid; grid-template-columns: repeat(12, 1fr);
+            gap: 20px; padding: 40px 5% 80px;
+        }
+
+        .card {
+            background: var(--card); border-radius: 28px; padding: 35px;
+            grid-column: span 6; border: 1px solid rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover { transform: translateY(-5px); }
+        .card.full { grid-column: span 12; }
+        .card.dark { background: #1d1d1f; color: white; }
+
+        .badge { 
+            background: var(--primary); color: white; padding: 6px 12px; 
+            border-radius: 20px; font-size: 11px; font-weight: 800; 
+            margin-bottom: 15px; text-transform: uppercase; display: inline-block;
+        }
+
+        h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin: 0 0 20px; }
+        h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-top: 0; }
+        
+        .interactive-box {
+            background: white; border-radius: 20px; padding: 25px;
+            color: var(--text); margin-top: 20px; border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .diary-entry {
+            font-family: 'Playfair Display', serif; font-style: italic;
+            padding: 30px; background: #fffdf5; border: 1px solid #e5e0d0;
+            border-radius: 4px; position: relative; color: #444;
+        }
+
+        .image-box img {
+            width: 100%; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .stat-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;
+        }
+
+        .stat-item {
+            background: rgba(255,255,255,0.1); padding: 15px; border-radius: 15px; text-align: center;
+        }
+
+        @media (max-width: 900px) {
+            .card { grid-column: span 12; }
+            .stat-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div style="font-weight: 900; font-size: 1.4rem;">HISTORY<span style="color:var(--primary)">1812</span></div>
+    <a href="index.html" style="text-decoration: none; color: var(--primary); font-weight: bold; font-size: 0.9rem;">← BACK TO ARCHIVE</a>
+</nav>
+
+<header>
+    <span class="badge">Module 06</span>
+    <h1>Life as a Soldier.</h1>
+    <p>Behind the smoke of the battlefield lay a life of grueling marches, stale bread, and the constant fight against disease.</p>
+</header>
+
+<div class="bento-grid">
+
+    <!-- Militia vs Regulars -->
+    <div class="card">
+        <h2>Militia vs. Regulars</h2>
+        <p>Not every man in a red coat was a professional soldier. The defense of Canada relied on two very different groups:</p>
+        <div class="interactive-box">
+            <p><strong>British Regulars:</strong> Highly trained, disciplined professionals. They wore the iconic "Red Coat" and served for years.</p>
+            <hr style="opacity: 0.1; margin: 15px 0;">
+            <p><strong>The Militia:</strong> Local farmers and citizens called to duty. They often lacked uniforms, sometimes wearing only their work clothes or green jackets.</p>
+        </div>
+    </div>
+
+    <!-- Rations & Food -->
+    <div class="card dark">
+        <h2>Survival Rations</h2>
+        <p>Soldiers were fueled by a monotonous and often rotten diet. Can you stomach the daily allowance?</p>
+        <div class="stat-grid">
+            <div class="stat-item">
+                <div style="font-size: 1.5rem;">🍞</div>
+                <strong>1 lb Hardtack</strong>
+                <p style="font-size: 0.8rem; opacity: 0.7;">Flour and water biscuit, hard as a brick.</p>
+            </div>
+            <div class="stat-item">
+                <div style="font-size: 1.5rem;">🥩</div>
+                <strong>1 lb Salt Pork</strong>
+                <p style="font-size: 0.8rem; opacity: 0.7;">Preserved meat that was often rancid.</p>
+            </div>
+            <div class="stat-item">
+                <div style="font-size: 1.5rem;">☕</div>
+                <strong>Peas & Beer</strong>
+                <p style="font-size: 0.8rem; opacity: 0.7;">Standard liquids when water was unsafe.</p>
+            </div>
+            <div class="stat-item">
+                <div style="font-size: 1.5rem;">💰</div>
+                <strong>6 Pence/Day</strong>
+                <p style="font-size: 0.8rem; opacity: 0.7;">Average pay after deductions for food.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Diary Entry -->
+    <div class="card full">
+        <h2>A Soldier's Perspective</h2>
+        <div class="diary-entry">
+            <p>"October 12, 1812 — The rain has not stopped for three days. My boots have rotted through, and the mud of the Niagara trail threatens to swallow our cannons whole. Dinner was a piece of salt beef so tough I had to use my bayonet to carve it. We hear rumors that the Americans are crossing the river tonight. I hope my powder stays dry; a wet musket is nothing but a heavy stick in a fight."</p>
+        </div>
+    </div>
+
+    <!-- Equipment -->
+    <div class="card">
+        <div class="image-box">
+            <img src="https://wikimedia.org" alt="Brown Bess Musket">
+        </div>
+        <h2>The Brown Bess</h2>
+        <p>The standard-issue musket was a smoothbore flintlock. While powerful, it was notoriously inaccurate at long distances. Soldiers were trained to fire in "volleys" to create a wall of lead.</p>
+    </div>
+
+    <!-- Disease & Health -->
+    <div class="card">
+        <h3>The Silent Killer</h3>
+        <p>For every soldier killed in battle, <strong>three died of disease</strong>. Living in crowded tents and damp barracks led to outbreaks of: </p>
+        <ul style="opacity: 0.8;">
+            <li>Dysentery (from dirty water)</li>
+            <li>Typhus and Smallpox</li>
+            <li>Respiratory infections from winter dampness</li>
+        </ul>
+        <div style="margin-top: 20px; padding: 15px; background: rgba(255, 59, 48, 0.1); border-radius: 15px; color: var(--accent); font-weight: bold; text-align: center;">
+            Medical care often involved "bleeding" or amputations without anesthesia.
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 1812 Digital Archive — Educational Resource</p>
+</footer>
+
+</body>
+</html>

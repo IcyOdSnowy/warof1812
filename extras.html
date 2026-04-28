@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extras | 1812 Digital Archive</title>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #007AFF; /* Tech Blue */
+            --bg: #ffffff;
+            --card: #f5f5f7;
+            --text: #1d1d1f;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1rem 5%; background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(20px); position: sticky; top: 0; z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        header {
+            padding: 80px 5% 40px;
+            background: var(--card);
+            text-align: center;
+        }
+
+        header h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; margin: 0; }
+        header p { font-size: 1.2rem; max-width: 700px; margin: 20px auto; opacity: 0.7; }
+
+        .bento-grid {
+            display: grid; grid-template-columns: repeat(12, 1fr);
+            gap: 20px; padding: 40px 5% 80px;
+        }
+
+        .card {
+            background: var(--card); border-radius: 28px; padding: 35px;
+            grid-column: span 6; border: 1px solid rgba(0,0,0,0.05);
+            transition: transform 0.3s cubic-bezier(0.2, 1, 0.2, 1);
+        }
+
+        .card:hover { transform: scale(1.02); border-color: var(--primary); }
+        .card.full { grid-column: span 12; }
+        .card.highlight { background: var(--primary); color: white; }
+
+        .badge { 
+            background: var(--primary); color: white; padding: 6px 12px; 
+            border-radius: 20px; font-size: 11px; font-weight: 800; 
+            margin-bottom: 15px; text-transform: uppercase; display: inline-block;
+        }
+
+        h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin: 0 0 15px; }
+        h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 10px; }
+        
+        .recipe-box {
+            background: white; border-radius: 20px; padding: 25px;
+            color: var(--text); border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .fact-bubble {
+            background: rgba(0,122,255,0.1); padding: 15px 25px; border-radius: 15px;
+            margin-bottom: 15px; font-weight: 500; color: var(--primary);
+        }
+
+        @media (max-width: 900px) {
+            .card { grid-column: span 12; }
+            header h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div style="font-weight: 900; font-size: 1.4rem;">HISTORY<span style="color:var(--primary)">1812</span></div>
+    <a href="index.html" style="text-decoration: none; color: var(--primary); font-weight: bold; font-size: 0.9rem;">← BACK TO ARCHIVE</a>
+</nav>
+
+<header>
+    <span class="badge">Bonus Content</span>
+    <h1>Fun Extras & Trivia.</h1>
+    <p>Dive deeper into the archives with weird facts, campfire recipes, and legendary songs.</p>
+</header>
+
+<div class="bento-grid">
+
+    <!-- Did You Know? -->
+    <div class="card">
+        <h2>Did You Know?</h2>
+        <div class="fact-bubble">"Uncle Sam" was inspired by a meat supplier named Sam Wilson who fed the army in 1812.</div>
+        <div class="fact-bubble">The Battle of New Orleans was fought AFTER the peace treaty was already signed in Belgium.</div>
+        <div class="fact-bubble">The British burned the White House in retaliation for Americans burning the capital of Canada (York).</div>
+    </div>
+
+    <!-- Historical Recipe -->
+    <div class="card">
+        <h2>Campfire Cooking</h2>
+        <p>Soldiers survived on simple, durable rations. Try the most famous one:</p>
+        <div class="recipe-box">
+            <h3>Hardtack (Survival Bread)</h3>
+            <p><strong>Ingredients:</strong> 2 cups flour, 3/4 cup water, 1 tsp salt.</p>
+            <ol style="font-size: 0.9rem; opacity: 0.8; padding-left: 20px;">
+                <li>Mix until you have a stiff dough.</li>
+                <li>Flatten to 1/2 inch thickness.</li>
+                <li>Bake at 375°F for 30 mins, flip, and bake for 30 more.</li>
+                <li>Let it dry for days until it's hard as a rock!</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Songs of the War -->
+    <div class="card highlight">
+        <h2 style="color: white;">Folk Songs & Ballads</h2>
+        <p>Music was the primary way stories were shared. Listen for these titles in historical archives:</p>
+        <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 10px;">🎵 <strong>"The Bold Canadian"</strong> — A patriotic song celebrating the defense of Upper Canada.</li>
+            <li style="margin-bottom: 10px;">🎵 <strong>"The Girl I Left Behind Me"</strong> — A classic marching tune used by both sides.</li>
+            <li style="margin-bottom: 10px;">🎵 <strong>"The Star-Spangled Banner"</strong> — Written after the bombardment of Fort McHenry.</li>
+        </ul>
+    </div>
+
+    <!-- Quick Trivia Quiz -->
+    <div class="card">
+        <h2>Trivia Challenge</h2>
+        <p>Quick check: What was the Latin name of the Treaty of Ghent?</p>
+        <button onclick="alert('Status Quo Ante Bellum!')" style="background: white; border: 1px solid var(--primary); color: var(--primary); padding: 10px 20px; border-radius: 12px; cursor: pointer; font-weight: 700; width: 100%;">Click for Answer</button>
+        <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.6;">More trivia: Who was the only group to truly lose the war? (Hint: See the Treaty Module)</p>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 1812 Digital Archive — Educational Resource</p>
+</footer>
+
+</body>
+</html>
