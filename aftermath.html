@@ -3,199 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1812 | The Digital Archive</title>
-    <!-- Modern Font: Inter for UI, Playfair for History -->
+    <title>1812 | Aftermath & Legacy</title>
     <link href="https://googleapis.com" rel="stylesheet">
     <style>
-        :root {
-            --primary: #007AFF; /* Tech Blue */
-            --bg: #ffffff;
-            --card: #f5f5f7;
-            --text: #1d1d1f;
-            --accent: #ffcc00;
-        }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            scroll-behavior: smooth;
-        }
-
-        /* Navigation & Functional Search */
-        nav {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 1rem 5%; background: rgba(255,255,255,0.8);
-            backdrop-filter: blur(20px); position: sticky; top: 0; z-index: 1000;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
-        }
-
-        .search-container { display: flex; align-items: center; background: #f2f2f7; padding: 8px 15px; border-radius: 12px; width: 300px; }
-        .search-container input { background: none; border: none; outline: none; margin-left: 10px; width: 100%; }
-
-        /* Hero Section */
-        header {
-            height: 60vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), 
-                        url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAHFUx60A5-LswacxCoFe7Y_c613mtOJ1Ttw&s') center/cover;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; color: white;
-        }
-
-        header h1 { font-family: 'Playfair Display', serif; font-size: 5rem; margin: 0; }
-        header p { font-size: 1.2rem; max-width: 700px; opacity: 0.9; }
-
-        /* The Bento Grid */
-        .bento-grid {
-            display: grid; grid-template-columns: repeat(12, 1fr);
-            gap: 20px; padding: 60px 5%;
-        }
-
-        .section-card {
-            background: var(--card); border-radius: 28px; padding: 30px;
-            grid-column: span 4; transition: 0.4s cubic-bezier(0.2, 1, 0.2, 1);
-            text-decoration: none; color: inherit; border: 1px solid rgba(0,0,0,0.05);
-            display: flex; flex-direction: column; justify-content: space-between;
-            overflow: hidden; position: relative;
-        }
-
-        .section-card:hover { transform: scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-color: var(--primary); }
+        :root { --primary: #007AFF; --bg: #ffffff; --card: #f5f5f7; --text: #1d1d1f; }
+        body { background-color: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; margin: 0; }
         
-        .section-card.large { grid-column: span 8; }
-        .section-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 20px; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 5%; border-bottom: 1px solid #eee; position: sticky; top: 0; background: rgba(255,255,255,0.8); backdrop-filter: blur(10px); z-index: 100; }
+        
+        .back-btn { text-decoration: none; color: var(--primary); font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; gap: 5px; }
+        .back-btn:hover { opacity: 0.7; }
 
-        .badge { background: var(--primary); color: white; padding: 6px 12px; border-radius: 20px; font-size: 11px; font-weight: 800; align-self: flex-start; margin-bottom: 10px; text-transform: uppercase; }
-        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin: 10px 0; }
-        p { font-size: 0.95rem; opacity: 0.7; line-height: 1.5; }
+        header { text-align: center; padding: 80px 5% 40px; }
+        header h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; margin: 0; }
 
-        /* Responsive */
-        @media (max-width: 1000px) { .section-card, .section-card.large { grid-column: span 12; } .search-container { display: none; } }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 5% 100px; display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; }
+        
+        /* Interactive Timeline Slider */
+        .timeline-section { grid-column: span 12; background: var(--card); border-radius: 32px; padding: 40px; text-align: center; margin-bottom: 20px; }
+        .slider-container { margin: 30px 0; }
+        input[type="range"] { width: 100%; cursor: pointer; height: 8px; border-radius: 5px; appearance: none; background: #ddd; outline: none; }
+        input[type="range"]::-webkit-slider-thumb { appearance: none; width: 24px; height: 24px; border-radius: 50%; background: var(--primary); }
+        .event-display { margin-top: 20px; min-height: 120px; transition: 0.3s; }
+        .event-year { font-size: 2rem; font-weight: 900; color: var(--primary); display: block; }
+        
+        /* Content Boxes */
+        .content-box { grid-column: span 6; background: var(--card); border-radius: 28px; padding: 30px; position: relative; overflow: hidden; }
+        .content-box.full { grid-column: span 12; display: flex; align-items: center; gap: 40px; }
+        .content-box img { width: 100%; height: 200px; object-fit: cover; border-radius: 18px; margin-bottom: 15px; }
+        .full img { width: 40%; height: auto; margin-bottom: 0; }
+        
+        h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin: 0 0 10px; }
+        p { opacity: 0.8; font-size: 1rem; line-height: 1.5; }
+        .badge { background: rgba(0,122,255,0.1); color: var(--primary); padding: 5px 12px; border-radius: 20px; font-size: 11px; font-weight: 800; text-transform: uppercase; margin-bottom: 15px; display: inline-block; }
+
+        @media (max-width: 800px) { .content-box, .content-box.full { grid-column: span 12; flex-direction: column; } .full img { width: 100%; } }
     </style>
 </head>
 <body>
 
 <nav>
-    <div style="font-weight: 900; font-size: 1.4rem;">HISTORY<span style="color:var(--primary)">1812</span></div>
-    <div class="search-container">
-        <span>🔍</span>
-        
-    </div>
-    <div style="font-weight: bold; font-size: 0.9rem;">GRADE 7 EDITION</div>
+    <a href="index.html" class="back-btn">← BACK</a>
+    <div style="font-weight: 900;">HISTORY1812</div>
+    <div style="font-size: 0.8rem; opacity: 0.6;">AFTERMATH & IDENTITY</div>
 </nav>
 
 <header>
-    <h1>A Frontier on Fire.</h1>
-    <p>After the smoke cleared, a nation began to emerge. Explore how the War of 1812 became Canada's "War of Independence."</p>
+    <h1>The Impact on Canada</h1>
 </header>
 
-<div class="bento-grid" id="contentArea">
-    
-    
-    <a href="aftermath.html" class="section-card large searchable">
-        <span class="badge">Module 08</span>
-        <h2>Aftermath & The Birth of Identity</h2>
-        <p>The war acted as a "crucible," forging a distinct sense of being Canadian. Living through the American invasion made colonists realize they were <b>not</b> Americans. It sparked a shared history and a common pride in defending their homes, laying the groundwork for Confederation 50 years later.</p>
-        <img src="https://thecanadianencyclopedia.ca" alt="War Memorial">
-    </a>
+<main class="container">
+    <!-- Interactive Timeline -->
+    <section class="timeline-section">
+        <span class="badge">Interactive Timeline</span>
+        <h2>Key Turning Points</h2>
+        <div class="slider-container">
+            <input type="range" id="timeSlider" min="0" max="3" value="0">
+        </div>
+        <div id="eventDisplay" class="event-display">
+            <span class="event-year" id="eventYear">1812</span>
+            <h3 id="eventTitle">War Declared</h3>
+            <p id="eventDesc">The United States declares war on Britain, targeting Upper and Lower Canada.</p>
+        </div>
+    </section>
 
-    <!-- Module 09: Loyalty & Unity -->
-    <a href="unity.html" class="section-card searchable">
-        <span class="badge">Module 09</span>
-        <h2>Loyalty & French-English Unity</h2>
-        <p>Why did loyalty to Britain increase? Fear of American republicanism pushed Canadians closer to the Crown. Surprisingly, French-Canadians and English-Canadians fought side-by-side (notably at Chateauguay), proving they could unite against a common threat to protect their unique way of life.</p>
-    </a>
+    <div class="content-box full">
+        <div style="flex: 1;">
+            <span class="badge">Identity</span>
+            <h2>Shaping a Nation</h2>
+            <p>Living through the invasion made colonists realize they were <b>not Americans</b>. This shared pride in defending their homes against the [Burning of York](https://americanacorner.com) laid the groundwork for a unified Canada.</p>
+        </div>
+        <img src="https://gstatic.com" alt="Historical Painting of York">
+    </div>
 
-    <!-- Module 10: Why We Remember -->
-    <a href="remember.html" class="section-card searchable">
-        <span class="badge">Module 10</span>
-        <h2>Why We Remember Today</h2>
-        <p>We remember because without this war, Canada likely wouldn't exist as a separate country. It defined our borders and ensured that North America would remain a place of two distinct nations.</p>
-    </a>
+    <!-- French-English Unity -->
+    <div class="content-box">
+        <span class="badge">Unity</span>
+        <h2>French-English Cooperation</h2>
+        <p>At the [Battle of Châteauguay](https://thecanadianencyclopedia.ca), French-Canadian Voltigeurs and English troops united to stop the American advance on Montreal.</p>
+    </div>
 
-    <!-- Previous Modules (Condensed for focus) -->
-    <a href="heroes.html" class="section-card searchable">
-        <span class="badge">Module 04</span>
-        <h2>Legendary Figures</h2>
-        <p>Brock, Tecumseh, and Secord: The faces of resistance.</p>
-    </a>
+    <!-- Loyalty -->
+    <div class="content-box">
+        <span class="badge">Loyalty</span>
+        <h2>Bonds to the Crown</h2>
+        <p>The war strengthened loyalty to Britain. The monarchy represented <b>order and stability</b> compared to the "republican chaos" seen south of the border.</p>
+    </div>
 
-    <a href="firstnations.html" class="section-card searchable">
-        <span class="badge">Module 05</span>
-        <h2>Indigenous Perspective</h2>
-        <p>The tragic cost of the war for First Nations sovereignty.</p>
-    </a>
-
-    <a href="quiz.html" class="section-card large searchable" style="background: var(--primary); color: white;">
-        <span class="badge" style="background: white; color: var(--primary);">Interactive</span>
-        <h2>Test Your Knowledge</h2>
-        <p>Ready to prove you're a historian? Take the 10-question challenge on the Aftermath and Legacy of 1812.</p>
-    </a>
-</div>
-
-<footer style="background: #f5f5f7; padding: 40px 5%; text-align: center; border-top: 1px solid #ddd;">
-    <p>&copy; 2026 War of 1812 Digital Archive | All Rights Reserved</p>
-    <p><b>Created by: Satori Szeto and Lucas Lin</b></p>
-</footer>
+    <!-- Why We Remember Today -->
+    <div class="content-box full" style="background: var(--primary); color: white;">
+        <div style="flex: 1;">
+            <span class="badge" style="background: white;">The Legacy</span>
+            <h2 style="color: white;">Why We Remember Today</h2>
+            <p style="color: white; opacity: 1;">Without this war, Canada likely wouldn't exist as a separate nation. It defined the borders and ensured that North America would remain a place of two distinct cultures.</p>
+        </div>
+    </div>
+</main>
 
 <script>
-    const searchBar = document.getElementById('searchBar');
-    const cards = document.querySelectorAll('.searchable');
+    const events = [
+        { year: "1812", title: "War Declared", desc: "US President James Madison declares war on Great Britain over trade rights and impressment." },
+        { year: "1813", title: "Battle of Chateauguay", desc: "A key victory where French and English Canadians united to defend Lower Canada." },
+        { year: "1814", title: "Treaty of Ghent", desc: "Peace is signed in Belgium, ending the war and returning borders to their original state." },
+        { year: "1815", title: "A New Identity", desc: "Canadians begin to see themselves as a unique people, separate from the U.S. and independent in spirit." }
+    ];
 
-    searchBar.addEventListener('keyup', (e) => {
-        const searchString = e.target.value.toLowerCase();
-        cards.forEach(card => {
-            const title = card.querySelector('h2').innerText.toLowerCase();
-            const text = card.querySelector('p').innerText.toLowerCase();
-            card.style.display = (title.includes(searchString) || text.includes(searchString)) ? "flex" : "none";
-        });
+    const slider = document.getElementById('timeSlider');
+    const yearEl = document.getElementById('eventYear');
+    const titleEl = document.getElementById('eventTitle');
+    const descEl = document.getElementById('eventDesc');
+
+    slider.addEventListener('input', () => {
+        const event = events[slider.value];
+        yearEl.textContent = event.year;
+        titleEl.textContent = event.title;
+        descEl.textContent = event.desc;
     });
 </script>
 
 </body>
-<script>
-    // Disable right-click menu (context menu)
-   document.addEventListener('contextmenu', event => event.preventDefault());
-   
-   // Detect if Developer Tools are opened using shortcuts or console methods
-   let devToolsOpened = false;
-   const element = new Image();
-   Object.defineProperty(element, 'id', {
-       get: function() {
-           devToolsOpened = true;
-           closeGame(); // Close the game if Developer Tools are opened
-       }
-   });
-   
-   // Function to check for Developer Tools every second
-   setInterval(() => {
-       devToolsOpened = false;
-       console.log(element); // This triggers the get function if Dev Tools are open
-       if (devToolsOpened) {
-           closeGame();
-       }
-   }, 1000);
-   
-   // Function to close the game or tab
-   function closeGame() {
-       alert("Sorry! But it doesn't look like you have permission to view the code. If you think this is a mistake, please contact the creators of this project.");
-       window.close(); // Close the tab (might be blocked in some browsers)
-       window.location.href = "table_of_contents.html"; // Fallback to redirect to a blank page
-   }
-   
-   // Block certain key combinations (Ctrl+Shift+I, Ctrl+U, F12, etc.)
-   document.addEventListener('keydown', (event) => {
-       if (
-           (event.ctrlKey && event.shiftKey && event.keyCode === 73) || // Ctrl+Shift+I
-           (event.ctrlKey && event.keyCode === 85) || // Ctrl+U
-           (event.keyCode === 123) || // F12
-           (event.ctrlKey && event.shiftKey && event.keyCode === 74) // Ctrl+Shift+J (for Console)
-       ) {
-           event.preventDefault(); // Prevent the default action of opening Dev Tools or View Source
-           closeGame();
-       }
-   });
-   
-   
-   </script>
+<script> // Disable right-click menu (context menu) document.addEventListener('contextmenu', event => event.preventDefault()); // Detect if Developer Tools are opened using shortcuts or console methods let devToolsOpened = false; const element = new Image(); Object.defineProperty(element, 'id', { get: function() { devToolsOpened = true; closeGame(); // Close the game if Developer Tools are opened } }); // Function to check for Developer Tools every second setInterval(() => { devToolsOpened = false; console.log(element); // This triggers the get function if Dev Tools are open if (devToolsOpened) { closeGame(); } }, 1000); // Function to close the game or tab function closeGame() { alert("Sorry! But it doesn't look like you have permission to view the code. If you think this is a mistake, please contact the creators of this project."); window.close(); // Close the tab (might be blocked in some browsers) window.location.href = "table_of_contents.html"; // Fallback to redirect to a blank page } // Block certain key combinations (Ctrl+Shift+I, Ctrl+U, F12, etc.) document.addEventListener('keydown', (event) => { if ( (event.ctrlKey && event.shiftKey && event.keyCode === 73) || // Ctrl+Shift+I (event.ctrlKey && event.keyCode === 85) || // Ctrl+U (event.keyCode === 123) || // F12 (event.ctrlKey && event.shiftKey && event.keyCode === 74) // Ctrl+Shift+J (for Console) ) { event.preventDefault(); // Prevent the default action of opening Dev Tools or View Source keepGame(); } }); </script>
 </html>
